@@ -1,6 +1,7 @@
+from models.student import Student
 from services.csv_reader import CSVReader
 from services.initial_centroid import initial_centroid
-from services.cluster import Cluster
+from models.cluster import Cluster
 from services.calculate import Calculate
 
 def main():
@@ -15,14 +16,14 @@ def main():
         
         if (cluster):
             cluster.addStudent(student)
-            
-    for cluster in calculate.clusters:
-        print(f"Cluster: {cluster}")
-        
-    pass
-
     
-
+    new_cluster = calculate.calculate_new_cluster(min_students=6)
+    print(f"Novo cluster: {new_cluster}")
+ 
+    for idx, cluster in enumerate(calculate.clusters):
+        print(f"\n Cluster {idx + 1} - Centroide: {cluster.centroid}")
+        for student in cluster.students:
+            print(f"  - {student}")
     
     
 if __name__ == "__main__":
