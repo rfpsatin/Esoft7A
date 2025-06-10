@@ -53,14 +53,14 @@ from sklearn.datasets import load_iris  # Usada APENAS para carregar um conjunto
 # --- ETAPA 1 e 5: ESTRUTURA DE DADOS E MANIPULAÇÃO DE DADOS CATEGÓRICOS ---
 
 class Registro:
-    """
-    Esta classe é o "molde" para cada ponto de dado individual.
-    Ela guarda todas as informações de um único ponto no gráfico.
-    """
-    def __init__(self, caracteristicas, dados_categoricos=None, nome_ponto=""):
-        # Garante que as características principais (como coordenadas X e Y) são numéricas.
-        if not all(isinstance(x, (int, float)) for x in caracteristicas):
-            raise ValueError("Características devem ser numéricas.")
+"""
+Esta classe é o "molde" para cada ponto de dado individual.
+Ela guarda todas as informações de um único ponto no gráfico.
+"""
+def __init__(self, caracteristicas, dados_categoricos=None, nome_ponto=""):
+# Garante que as características principais (como coordenadas X e Y) são numéricas.
+if not all(isinstance(x, (int, float)) for x in caracteristicas):
+raise ValueError("Características devem ser numéricas.")
 
         # --- ATRIBUTOS DO PONTO ---
         self.caracteristicas = list(caracteristicas)  # Lista de valores numéricos (ex: [X, Y]).
@@ -115,17 +115,17 @@ class Registro:
 
 
 class Cluster:
-    """
-    Esta classe representa um grupo de pontos (Registros).
-    Ela gerencia os pontos que pertencem a ela e seu próprio centroide.
-    """
-    def __init__(self, id, cor, centroide_inicial):
-        self.id = id  # ID numérico do cluster (ex: 0, 1, 2...).
-        self.cor = cor  # Cor que todos os pontos deste cluster terão no gráfico.
-        self.registros = []  # Lista que armazena todos os objetos Registro deste cluster.
-        self.centroide = centroide_inicial  # O ponto central do cluster.
-        self.centroide.eh_centroide = True  # Marca o registro inicial como sendo um centroide.
-        self.adicionar_registro(self.centroide)  # O próprio centroide também faz parte da lista de registros.
+"""
+Esta classe representa um grupo de pontos (Registros).
+Ela gerencia os pontos que pertencem a ela e seu próprio centroide.
+"""
+def __init__(self, id, cor, centroide_inicial):
+self.id = id  # ID numérico do cluster (ex: 0, 1, 2...).
+self.cor = cor  # Cor que todos os pontos deste cluster terão no gráfico.
+self.registros = []  # Lista que armazena todos os objetos Registro deste cluster.
+self.centroide = centroide_inicial  # O ponto central do cluster.
+self.centroide.eh_centroide = True  # Marca o registro inicial como sendo um centroide.
+self.adicionar_registro(self.centroide)  # O próprio centroide também faz parte da lista de registros.
 
     def adicionar_registro(self, registro):
         """Adiciona um ponto (Registro) a este cluster."""
@@ -177,13 +177,13 @@ class Cluster:
 # --- CLASSE PRINCIPAL DA APLICAÇÃO ---
 
 class KMeansApp:
-    """
-    Esta classe controla toda a aplicação: a interface gráfica e a lógica do K-means.
-    """
-    def __init__(self, root):
-        self.root = root  # A janela principal da aplicação.
-        self.root.title("Trabalho de Clusterização K-means")
-        self.root.geometry("1200x800")
+"""
+Esta classe controla toda a aplicação: a interface gráfica e a lógica do K-means.
+"""
+def __init__(self, root):
+self.root = root  # A janela principal da aplicação.
+self.root.title("Trabalho de Clusterização K-means")
+self.root.geometry("1200x800")
 
         # --- Atributos de Estado da Aplicação ---
         self.clusters = []  # Lista que armazena todos os objetos Cluster.
@@ -587,7 +587,7 @@ class KMeansApp:
 
 # --- PONTO DE ENTRADA DO PROGRAMA ---
 if __name__ == "__main__":
-    # Esta parte só é executada quando o script é rodado diretamente.
+# Esta parte só é executada quando o script é rodado diretamente.
 
     # Cria a janela principal da interface.
     root = tk.Tk()
